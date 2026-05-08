@@ -2,11 +2,10 @@ FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 COPY . .
 
-# give permission to mvnw
 RUN chmod +x mvnw
-
-# build project
 RUN ./mvnw clean package -DskipTests
 
-# run jar
-CMD ["java","-jar","target/*.jar"]
+# find jar and rename to app.jar
+RUN mv target/*.jar app.jar
+
+CMD ["java","-jar","app.jar"]
