@@ -1,13 +1,12 @@
-package com.example.sportsregistration.mapper;
+package com.example.sportsregistrationApplicationTests.Mapper;
 
-import com.example.sportsregistration.dto.RegistrationDTO;
-import com.example.sportsregistration.entity.Registration;
+import com.example.sportsregistrationApplicationTests.dto.RegistrationDTO;
+import com.example.sportsregistrationApplicationTests.entity.Registration;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RegistrationMapper {
 
-    // DTO → Entity
     public Registration toEntity(RegistrationDTO dto) {
         Registration reg = new Registration();
         reg.setName(dto.getName());
@@ -25,7 +24,6 @@ public class RegistrationMapper {
         return reg;
     }
 
-    // Entity → DTO
     public RegistrationDTO toDTO(Registration reg) {
         RegistrationDTO dto = new RegistrationDTO();
         dto.setName(reg.getName());

@@ -1,4 +1,4 @@
-package com.example.sportsregistration.dto;
+package com.example.sportsregistrationApplicationTests.dto;
 
 import jakarta.validation.constraints.*;
 import jakarta.validation.constraints.Pattern;

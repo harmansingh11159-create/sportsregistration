@@ -1,14 +1,15 @@
-package com.example.sportsregistration.controller;
+package com.example.sportsregistrationApplicationTests.controller;
 
-import com.example.sportsregistration.mapper.RegistrationMapper;
-import com.example.sportsregistration.dto.RegistrationDTO;
-import com.example.sportsregistration.entity.Registration;
-import com.example.sportsregistration.service.RegistrationService;
-import jakarta.validation.Valid;
+import com.example.sportsregistrationApplicationTests.dto.RegistrationDTO;
+import com.example.sportsregistrationApplicationTests.entity.Registration;
+import com.example.sportsregistrationApplicationTests.Mapper.RegistrationMapper;
+import com.example.sportsregistrationApplicationTests.service.RegistrationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/registrations")
@@ -17,13 +18,12 @@ public class RegistrationController {
     private final RegistrationService service;
     private final RegistrationMapper mapper;
 
-    // Constructor injection
     public RegistrationController(RegistrationService service, RegistrationMapper mapper) {
         this.service = service;
         this.mapper = mapper;
     }
 
-    // CREATE Registration (DTO → Entity → DTO)
+    // Create a new registration
     @PostMapping
     public ResponseEntity<RegistrationDTO> createRegistration(@Valid @RequestBody RegistrationDTO dto) {
         Registration registration = mapper.toEntity(dto);
@@ -31,21 +31,22 @@ public class RegistrationController {
         return ResponseEntity.ok(mapper.toDTO(saved));
     }
 
-    // GET by ID (String for MongoDB)
+    // Get registration by ID
     @GetMapping("/{id}")
-    public ResponseEntity<RegistrationDTO> getRegistration(@PathVariable String id) {
-        Registration reg = service.getRegistrationById(id);
-
+    public ResponseEntity<RegistrationDTO> getRegistration(@PathVariable Long id) {
+        Registration reg = service.getRegistrationById(String.valueOf(id));
         if (reg == null) {
             return ResponseEntity.notFound().build();
         }
-
         return ResponseEntity.ok(mapper.toDTO(reg));
     }
 
-    // GET all
+    // Get all registrations
     @GetMapping
-    public ResponseEntity<List<Registration>> getAllRegistrations() {
-        return ResponseEntity.ok(service.getAllRegistrations());
+    public List<RegistrationDTO> getAllRegistrations() {
+        return service.getAllRegistrations()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

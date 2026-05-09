@@ -1,7 +1,7 @@
-package com.example.sportsregistration.service;
+package com.example.sportsregistrationApplicationTests.service;
 
-import com.example.sportsregistration.Repository.RegistrationRepository;
-import com.example.sportsregistration.entity.Registration;
+import com.example.sportsregistrationApplicationTests.Repository.RegistrationRepository;
+import com.example.sportsregistrationApplicationTests.entity.Registration;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +11,6 @@ public class RegistrationService {
 
     private final RegistrationRepository repository;
 
-    // Proper constructor injection
     public RegistrationService(RegistrationRepository repository) {
         this.repository = repository;
     }
