@@ -1,18 +1,13 @@
 package com.example.sportsregistration.entity;
-import org.springframework.data.mongodb.core.mapping.Document;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
-
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "registrations")
+@Document(collection = "registrations")
 public class Registration {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;   // MongoDB ObjectId stored as String
 
     private String name;
     private String fathersName;
@@ -27,110 +22,45 @@ public class Registration {
     private String district;
     private String country;
 
-    public Registration() {
-    }
+    public Registration() {}
 
-    public Long getId() {
-        return id;
-    }
+    // Getters and Setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getFathersName() {
-        return fathersName;
-    }
+    public String getFathersName() { return fathersName; }
+    public void setFathersName(String fathersName) { this.fathersName = fathersName; }
 
-    public String getAadhaarCardNo() {
-        return aadhaarCardNo;
-    }
+    public String getAadhaarCardNo() { return aadhaarCardNo; }
+    public void setAadhaarCardNo(String aadhaarCardNo) { this.aadhaarCardNo = aadhaarCardNo; }
 
-    public String getPaymentId() {
-        return paymentId;
-    }
+    public String getPaymentId() { return paymentId; }
+    public void setPaymentId(String paymentId) { this.paymentId = paymentId; }
 
-    public String getCategory() {
-        return category;
-    }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    public Integer getAge() {
-        return age;
-    }
+    public Integer getAge() { return age; }
+    public void setAge(Integer age) { this.age = age; }
 
-    public String getGender() {
-        return gender;
-    }
+    public String getGender() { return gender; }
+    public void setGender(String gender) { this.gender = gender; }
 
-    public String getSportsEvent() {
-        return sportsEvent;
-    }
+    public String getSportsEvent() { return sportsEvent; }
+    public void setSportsEvent(String sportsEvent) { this.sportsEvent = sportsEvent; }
 
-    public String getAddress() {
-        return address;
-    }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 
-    public String getState() {
-        return state;
-    }
+    public String getState() { return state; }
+    public void setState(String state) { this.state = state; }
 
-    public String getDistrict() {
-        return district;
-    }
+    public String getDistrict() { return district; }
+    public void setDistrict(String district) { this.district = district; }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFathersName(String fathersName) {
-        this.fathersName = fathersName;
-    }
-
-    public void setAadhaarCardNo(String aadhaarCardNo) {
-        this.aadhaarCardNo = aadhaarCardNo;
-    }
-
-    public void setPaymentId(String paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setSportsEvent(String sportsEvent) {
-        this.sportsEvent = sportsEvent;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
+    public String getCountry() { return country; }
+    public void setCountry(String country) { this.country = country; }
 }

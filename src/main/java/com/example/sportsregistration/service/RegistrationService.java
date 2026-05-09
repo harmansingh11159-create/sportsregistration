@@ -11,6 +11,7 @@ public class RegistrationService {
 
     private final RegistrationRepository repository;
 
+    // Proper constructor injection
     public RegistrationService(RegistrationRepository repository) {
         this.repository = repository;
     }
@@ -19,8 +20,8 @@ public class RegistrationService {
         return repository.save(registration);
     }
 
-    public Registration getRegistrationById(Long id) {
-        return (Registration) repository.findById(id).orElse(null);
+    public Registration getRegistrationById(String id) {
+        return repository.findById(id).orElse(null);
     }
 
     public List<Registration> getAllRegistrations() {

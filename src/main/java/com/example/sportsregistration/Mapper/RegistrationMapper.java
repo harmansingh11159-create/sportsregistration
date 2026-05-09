@@ -1,14 +1,15 @@
-package com.example.sportsregistration.Mapper;
+package com.example.sportsregistration.mapper;
 
 import com.example.sportsregistration.dto.RegistrationDTO;
 import com.example.sportsregistration.entity.Registration;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RegistrationMapper {
 
-    public static Registration toEntity(RegistrationDTO dto) {
-
+    // DTO → Entity
+    public Registration toEntity(RegistrationDTO dto) {
         Registration reg = new Registration();
-
         reg.setName(dto.getName());
         reg.setFathersName(dto.getFathersName());
         reg.setAadhaarCardNo(dto.getAadhaarCardNo());
@@ -21,27 +22,24 @@ public class RegistrationMapper {
         reg.setState(dto.getState());
         reg.setDistrict(dto.getDistrict());
         reg.setCountry(dto.getCountry());
-
         return reg;
     }
 
-    public static RegistrationDTO toDTO(Registration saved) {
-
+    // Entity → DTO
+    public RegistrationDTO toDTO(Registration reg) {
         RegistrationDTO dto = new RegistrationDTO();
-
-        dto.setName(saved.getName());
-        dto.setFathersName(saved.getFathersName());
-        dto.setAadhaarCardNo(saved.getAadhaarCardNo());
-        dto.setPaymentId(saved.getPaymentId());
-        dto.setCategory(saved.getCategory());
-        dto.setAge(saved.getAge());
-        dto.setGender(saved.getGender());
-        dto.setSportsEvent(saved.getSportsEvent());
-        dto.setAddress(saved.getAddress());
-        dto.setState(saved.getState());
-        dto.setDistrict(saved.getDistrict());
-        dto.setCountry(saved.getCountry());
-
+        dto.setName(reg.getName());
+        dto.setFathersName(reg.getFathersName());
+        dto.setAadhaarCardNo(reg.getAadhaarCardNo());
+        dto.setPaymentId(reg.getPaymentId());
+        dto.setCategory(reg.getCategory());
+        dto.setAge(reg.getAge());
+        dto.setGender(reg.getGender());
+        dto.setSportsEvent(reg.getSportsEvent());
+        dto.setAddress(reg.getAddress());
+        dto.setState(reg.getState());
+        dto.setDistrict(reg.getDistrict());
+        dto.setCountry(reg.getCountry());
         return dto;
     }
 }
