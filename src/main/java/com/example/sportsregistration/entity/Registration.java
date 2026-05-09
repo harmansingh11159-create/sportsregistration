@@ -1,4 +1,8 @@
 package com.example.sportsregistration.entity;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
+
+
 
 import jakarta.persistence.*;
 
